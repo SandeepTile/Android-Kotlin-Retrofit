@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                     addConverterFactory(GsonConverterFactory.create()).
                     build()
             var api = r.create(TrainRouteAPI::class.java)
-            var call = api.getRouteInfo()
+            var call = api.getRouteInfo(et1.text.toString())
 
 
             call.enqueue(object :Callback<TrainRouteBean>{
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     var routes=bean.route
                     for (r in routes!!)
                     {
-                        list.add("Cur Status : "+r.station.name)
+                        list.add("Routes : "+r.station.name)
                     }
 
                     var adapter=ArrayAdapter<String>(this@MainActivity,android.R.layout.simple_list_item_1,list)
